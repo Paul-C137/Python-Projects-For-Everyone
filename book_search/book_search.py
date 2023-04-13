@@ -11,8 +11,7 @@
    5. Allow user to search all books in the library.
    6. Allow user to replace the searched term with another word.
    7. Make searched terms disregard capitalization.
-   8. Add comments!
-   9. And many more...'''
+   8. And many more...'''
 
 def main():
     
