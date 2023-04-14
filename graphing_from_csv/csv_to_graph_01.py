@@ -46,11 +46,11 @@ def main():
     ind = np.arange(N)
     width = .5
     p1 = plt.bar(ind, rain, width, color='green')
-    p2 = plt.bar(ind, snow, width, color='blue')
+    p2 = plt.bar(ind, snow, width, color='blue', bottom=rain)
     plt.ylabel("Precipitation (inches)")
     plt.title("Jan 2023 Precipitation")
     plt.xticks(ind, date, rotation=45, fontsize='xx-small', ha='right')
-    plt.yticks(np.arange(0, 1, .1))
+    plt.yticks(np.arange(0, 1.5, .1))
     plt.legend(["Rain", "Snow"])
     # SAVE the graph locally
     plt.savefig("Precipitation_Jan_2023.png")
