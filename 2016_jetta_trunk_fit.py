@@ -1,6 +1,6 @@
 #!usr/bin/python3
 
-'''lackhack.tech | Paul Lack
+''' | Paul Lack
    Enter three deminsions to find out if an object will fit
    comfortably in the trunk of a 2016 Jetta before you buy it.'''
 
