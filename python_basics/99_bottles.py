@@ -1,4 +1,4 @@
-#!/usr/bin/python3
+10#!/usr/bin/python3
 
 '''Program to print lyrics of song "99 bottles of beer."'''
 
@@ -14,7 +14,7 @@ beer_supply = int(input("How many bottles of beer are on the wall? >>> "))
 
 
 for i in range(beer_supply):
-    if i == beer_supply + 1:
+    if i == beer_supply + 2:
         print(("#") * 10)
         print(str(beer_supply) + " " + lyrics.get(5))
         print(str(beer_supply) + " " + lyrics.get(3))
@@ -27,7 +27,7 @@ for i in range(beer_supply):
         print(str(beer_supply) + " " + lyrics.get(2))
         print(lyrics.get(4))
         beer_supply -= 1
-        if i == beer_supply == 1:
+        if beer_supply == 1:
             print(str(beer_supply) + " " + lyrics.get(5))
         else:    
             print(str(beer_supply) + " " + lyrics.get(1))
