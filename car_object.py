@@ -4,6 +4,7 @@ class Car:
         self.color = color
         self.size = size
         self.year = year
+        # notice no default is set for the 'make' attribute
         self.make = ''
     
     # the "set" methods allow us to change the attributes
