@@ -39,9 +39,13 @@ def move_monster():
             break
 
     # Randomly select a new room for the monster
+    # The .keys dictionary method returns a list-like object
+    # We have to force it to be a real list withe the list() function
     new_room = random.choice(list(rooms.keys()))
 
     # Move the monster to the new room
+    # Use the list methods .remove() and .append() to remove and add
+    # the monster to different lists in your dictionary
     rooms[current_room]['item'].remove('monster')
     rooms[new_room]['item'].append('monster')
 
