@@ -1,5 +1,8 @@
 import random
 
+# This is the map of our house.
+# Notice the value for 'item' is now a list.
+# We need this so we can have multiple items in a room.
 rooms = {
     'Hall': {
         'south': 'Kitchen',
@@ -17,10 +20,18 @@ rooms = {
 }
 
 def move_monster():
+    """This function finds out where the monster is
+       and moves it to a random room of the house."""
     current_room = None
     monster_room = None
 
     # Find the current room of the monster
+    # We can iterate over the room key and its value at the same time!
+    # room is the outermost key:value pair
+    # details is the inner dictionaires (south, item, north, etc.)
+    # Mind explosion!
+    # rooms.items() allows you to loop across all the key value pairs
+    # in the entire dictionary.
     for room, details in rooms.items():
         if 'monster' in details.get('item', []):
             current_room = room
