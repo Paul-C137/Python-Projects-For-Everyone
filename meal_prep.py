@@ -9,6 +9,9 @@ menu = {
     "pasta": ["Pasta", "Tomato sauce", "Ground beef", "Onion", "Garlic", "Parmesan cheese"],
 }
 
+# with open("menu.txt", 'r') as menu_file:
+      # menu = menu_file.read()  #menu is now a dictionary
+
 # The key is the item and the value is the aisle number.
 kroger = {
     "Ribeye steak": "8",
@@ -17,6 +20,7 @@ kroger = {
     "Salt": "22",
     "Pepper": "13",
     "Olive oil": "2",
+    "Chicken breast": "5",
 }
 
 # The key is the item and the value is the aisle number.
@@ -31,14 +35,18 @@ costco = {
 
 def render_list(grocery_list, meal_choice):
     if grocery_list:
-        store_choice = input("Type Costco or Kroger: ")
+        store_choice = input("Type Costco or Kroger: ").lower()
         print("Here's your grocery list for", meal_choice + ":")
-        if store_choice == "Costco":
+        if store_choice == "costco":
             for item in grocery_list:
                 print("- " + item + "    " + "Aisle " + costco.get(item))
-        else:
+                # print(f"- {item}     {Aisle} {costco.get(item}")
+        elif store_choice == "kroger":
             for item in grocery_list:
                 print("- " + item + "    " + "Aisle " + kroger.get(item))
+        else:
+            print("That's not a valid choice.")
+            
              
 # Function to help user decide what to eat
 def decide_meal():
