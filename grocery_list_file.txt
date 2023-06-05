@@ -1,0 +1,6 @@
+- Ribeye steak    Aisle 6
+- Potatoes    Aisle 1
+- Green beans    Aisle 8
+- Salt    Aisle 18
+- Pepper    Aisle 4
+- Olive oil    Aisle 7
