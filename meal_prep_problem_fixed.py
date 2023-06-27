@@ -31,7 +31,7 @@ kroger = {
     "Ground beef" : "5",
     "Onion" : "1",
     "Parmesan cheese" : "14",
-},
+}
 
 
 costco = {
