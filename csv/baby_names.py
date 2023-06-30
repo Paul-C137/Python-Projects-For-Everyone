@@ -90,6 +90,7 @@ while True:
             plt.title(f"Popularity of {name} ({gender.capitalize()}) Over Time")
             plt.savefig("name_popularity.pdf", format="pdf")
             plt.show()
+            break
         else:
             print("No data found for the specified name and gender.")
    
