@@ -1,7 +1,8 @@
 import csv
+import matplotlib.pyplot as plt
 
 def get_popular_name(year, gender):
-    filename = "baby_names_small.csv"
+    filename = "baby_names_large.csv"
     popular_name = None
     max_percent = 0
 
@@ -19,7 +20,7 @@ def get_popular_name(year, gender):
     return popular_name
 
 def get_popular_years(name, gender):
-    filename = "baby_names_small.csv"
+    filename = "baby_names_large.csv"
     popular_years = []
 
     with open(filename, "r") as file:
@@ -79,10 +80,16 @@ while True:
             print(f"List of {name}'s popularity by year:")
             for year, popularity in name_popularity:
                 print(f"Year: {year}, Popularity: {popularity}")
+
+            years = [year for year, _ in name_popularity]
+            popularities = [popularity for _, popularity in name_popularity]
+
+            plt.plot(years, popularities)
+            plt.xlabel("Year")
+            plt.ylabel("Popularity")
+            plt.title(f"Popularity of {name} ({gender.capitalize()}) Over Time")
+            plt.savefig("name_popularity.pdf", format="pdf")
+            plt.show()
         else:
             print("No data found for the specified name and gender.")
-    elif choice == "4":
-        print("Goodbye!")
-        break
-    else:
-        print("Invalid choice. Please select a valid option.")
+   
