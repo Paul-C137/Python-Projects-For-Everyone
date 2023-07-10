@@ -27,7 +27,7 @@ for i in range(beer_supply):
         print(str(beer_supply) + " " + lyrics.get(2))
         print(lyrics.get(4))
         beer_supply -= 1
-        if beer_supply == 1:
+        if beer_supply <= 1:
             print(str(beer_supply) + " " + lyrics.get(5))
         else:    
             print(str(beer_supply) + " " + lyrics.get(1))
