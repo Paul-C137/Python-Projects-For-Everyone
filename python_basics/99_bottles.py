@@ -31,6 +31,7 @@ for i in range(beer_supply):
             print(str(beer_supply) + " " + lyrics.get(5))
         else:    
             print(str(beer_supply) + " " + lyrics.get(1))
+            print(beer_supply)
        
 
 
