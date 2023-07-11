@@ -1,0 +1,11 @@
+
+   {"question": "What is the name of Ross and Monica's dog?", "answer": "Chi-Chi"}
+   {"question": "What is Joey's catchphrase?", "answer": "How you doin'?"}
+   {"question": "What is the name of Phoebe's most popular song?", "answer": "Smelly Cat"}
+   {"question": "What is Chandler's job?", "answer": "He is a transponster (just kidding! He works in statistical analysis and data reconfiguration)."}
+   {"question": "What is the name of Ross' second wife?", "answer": "Emily"}
+   {"question": "What is the name of Joey's stuffed penguin?", "answer": "Hugsy"}
+   {"question": "What is the name of the coffee shop where the friends often hang out?", "answer": "Central Perk"}
+   {"question": "Which two characters got married in Las Vegas?", "answer": "Ross and Rachel"}
+   {"question": "What is the name of Monica and Chandler's twins?", "answer": "Erica and Jack"}
+   {"question": "What is Phoebe's sister's name?", "answer": "Ursula"}
