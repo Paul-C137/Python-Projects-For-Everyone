@@ -1,4 +1,5 @@
 import random
+import json
 
 def get_trivia():
     with open('trivia.txt') as question_file:
@@ -13,7 +14,9 @@ def show_menu():
 def ask_questions():
     for i in range(5):
         trivia_questions = get_trivia()
-        question = dict(random.choice(trivia_questions))
+
+        question = random.choice(trivia_questions)
+        print(question)
         print(question["question"])
         user_answer = input("Your answer: ")
 
