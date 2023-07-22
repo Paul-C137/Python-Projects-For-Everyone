@@ -4,7 +4,7 @@
    input from the user.'''
 
 def calculate_bill(size, pepperoni, extra_cheese):
-    if size == 's':
+    if size == 's':                                                                                                                                                                                                                                                 
         bill = 15
         if pepperoni == 'y':
             bill += 2
