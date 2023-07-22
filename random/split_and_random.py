@@ -5,7 +5,7 @@
 
 import random
 
-def next_meal(main, side_1, side_2, beverage):
+def next_meal_choice(main, side_1, side_2, beverage):
     random_main = random.choice(main)
     random_side_1 = random.choice(side_1)
     random_side_2 = random.choice(side_1)
@@ -19,7 +19,7 @@ def main():
     main = main.split(', ')
     side = side.split(', ')
     beverage = beverage.split(', ')
-    a,b,c,d = next_meal(main, side, side, beverage)
+    a,b,c,d = next_meal_choice(main, side, side, beverage)
 
     print(f'Today, you will enjoy {a} with {b} and {c}.')
     print(f'You can wash it all down with a big glass of {d}.')
