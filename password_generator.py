@@ -23,11 +23,21 @@ def cap_char(password):
     pass_list.extend(password)
     for i in range(0, len(pass_list)):
         rando = random.randint(0,1)
-        print(rando)
         if rando == 1:
             pass_list[i]= pass_list[i].upper()
     password = ''.join(pass_list)
     return password
+
+def num_pass(password, num_numbers):
+    pass_list = []
+    pass_list.extend(password)
+    while num_numbers > 0:
+        choice = random.choice(pass_list)
+        if choice.isdigit() == False:
+            rando = random.randint(0,9)
+            pass_list[pass_list.index(choice)] = str(rando)
+            num_numbers -= 1
+    print(pass_list)
 
 def main():
 
@@ -37,6 +47,6 @@ def main():
 
     char_password = char_gen(number_letters)
     cap_password = cap_char(char_password)
-    print(cap_password)
+    num_password = num_pass(cap_password, number_numbers)
 
 main()
