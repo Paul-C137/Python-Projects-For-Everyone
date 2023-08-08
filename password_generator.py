@@ -10,6 +10,8 @@ letters = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h',
            'q', 'r', 's', 't', 'u', 'v', 'w', 'x',
            'y', 'z']
 
+specials = ['!', '@', '#', '$', '%', '^', '&', '*', '~', '?']
+
 def char_gen(num_letters):
     pass_list = []
     for i in range(num_letters):
@@ -37,7 +39,20 @@ def num_pass(password, num_numbers):
             rando = random.randint(0,9)
             pass_list[pass_list.index(choice)] = str(rando)
             num_numbers -= 1
-    print(pass_list)
+    password = ''.join(pass_list)
+    return password
+
+def special_pass(password, num_special):
+    pass_list = []
+    pass_list.extend(password)
+    while  num_special > 0:
+        choice = random.choice(pass_list)
+        if choice.isdigit() == False:
+            rando = random.choice(specials)
+            pass_list[pass_list.index(choice)] = str(rando)
+            num_special -= 1
+    password = ''.join(pass_list)
+    return password
 
 def main():
 
@@ -48,5 +63,7 @@ def main():
     char_password = char_gen(number_letters)
     cap_password = cap_char(char_password)
     num_password = num_pass(cap_password, number_numbers)
+    password = special_pass(num_password, number_special)
+    print(password)
 
 main()
