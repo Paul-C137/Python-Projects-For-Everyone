@@ -1,3 +1,5 @@
+'''This program sends an ARP broadcast and returns the IP and MAC address
+   for all the devices that respond.'''
 # Import the necessary Scapy module
 import scapy.all as scapy
 
@@ -5,6 +7,7 @@ import scapy.all as scapy
 request = scapy.ARP()
 
 # Set the target IP range to scan (CIDR notation)
+# Change to match your network, if necessary.
 request.pdst = '192.168.0.1/24'
 
 # Create an Ethernet frame (broadcast)
