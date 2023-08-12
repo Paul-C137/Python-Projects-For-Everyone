@@ -4,11 +4,12 @@ import os
 
 def get_user_input():
     date_input = input("Enter the class start date (YYYY-MM-DD): ")
-    return date_input
+    time_input = input("Enter the class start time (HH:MM): ")
+    return date_input, time_input
 
-def create_ical_event(date_str):
+def create_ical_event(date_str, time_str):
     event_date = datetime.strptime(date_str, "%Y-%m-%d")
-    event_time = datetime.strptime("08:00", "%H:%M")
+    event_time = datetime.strptime(time_str, "%H:%M")
     event_start = event_date.replace(hour=event_time.hour, minute=event_time.minute)
     event_end = event_start + timedelta(minutes=30)
     event_0 = Event()
@@ -26,8 +27,8 @@ def create_ical_event(date_str):
     return event_0, event_1
 
 def main():
-    date_input = get_user_input()
-    event_0, event_1 = create_ical_event(date_input)
+    date_input, time_input = get_user_input()
+    event_0, event_1 = create_ical_event(date_input, time_input)
     
     cal = Calendar()
     cal.add("version", "2.0")
