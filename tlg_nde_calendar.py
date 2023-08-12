@@ -11,26 +11,37 @@
    Each row in the file represents a block of instruction.
    '''
 
-
 from datetime import datetime, timedelta
 from icalendar import Calendar, Event
 import os
 import csv
 
 def get_user_input():
+    '''Get the start date and time for the course.'''
     date_input = input("Enter the class start date (YYYY-MM-DD): ")
     time_input = input("Enter the class start time (HH:MM): ")
     return date_input, time_input
 
 def create_ical_event(date_str, time_str):
+    '''Loops over a csv adding properties to an event object.  Then,
+       adds each event object to a calendar object.  Returns the 
+       calendar object.'''
+    # offset represents the time in minutes we are starting at.
     offset = 0
+    # Create calendar object.
     cal = Calendar()
+    # Add some necessary things.
     cal.add("version", "2.0")
     cal.add("prodid", "-//My Calendar//EN")
+    # Open CSV module.
     with open("tlg_data.csv", "r") as data:
+        # Create a reader object with the csv module.
         reader_obj = csv.reader(data)
+        #Loop over the csv object.
         for row in reader_obj:
+            # event_date comes from the user.  Add the days offset from the csv.
             event_date = datetime.strptime(date_str, "%Y-%m-%d") + timedelta(days=int(row[0]))
+            # event_time comes from the user.  Add the offset value in minutes.
             event_time = datetime.strptime(time_str, "%H:%M") + timedelta(minutes=offset)
             event_start = event_date.replace(hour=event_time.hour, minute=event_time.minute)
             event_end = event_start + timedelta(minutes=int(row[1]))
