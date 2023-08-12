@@ -1,6 +1,21 @@
+#!usr/bin/python3
+
+'''This program auto generates a class schedule in the iCal Mac OS app for 
+   TLG NDE based on the start date and class start time.  It relies on data 
+   stored in a csv file with the following format:
+
+   day offset, minute offset,duration,summary
+   0, 30, Greeting
+   ...
+
+   Each row in the file represents a block of instruction.
+   '''
+
+
 from datetime import datetime, timedelta
 from icalendar import Calendar, Event
 import os
+import csv
 
 def get_user_input():
     date_input = input("Enter the class start date (YYYY-MM-DD): ")
@@ -8,34 +23,28 @@ def get_user_input():
     return date_input, time_input
 
 def create_ical_event(date_str, time_str):
-    event_date = datetime.strptime(date_str, "%Y-%m-%d")
-    event_time = datetime.strptime(time_str, "%H:%M")
-    event_start = event_date.replace(hour=event_time.hour, minute=event_time.minute)
-    event_end = event_start + timedelta(minutes=30)
-    event_0 = Event()
-    event_0.add("summary", "Greeting")
-    event_0.add("dtstart", event_start)
-    event_0.add("dtend", event_end)
-
-    event_time = event_time + timedelta(minutes=30)
-    event_start = event_date.replace(hour=event_time.hour, minute=event_time.minute)
-    event_end = event_start + timedelta(minutes=30)
-    event_1 = Event()
-    event_1.add("summary", "Lab 1: Welcome to Alta3 Research Labs")
-    event_1.add("dtstart", event_start)
-    event_1.add("dtend", event_end)
-    return event_0, event_1
-
-def main():
-    date_input, time_input = get_user_input()
-    event_0, event_1 = create_ical_event(date_input, time_input)
-    
+    offset = 0
     cal = Calendar()
     cal.add("version", "2.0")
     cal.add("prodid", "-//My Calendar//EN")
-    
-    cal.add_component(event_0)
-    cal.add_component(event_1)
+    with open("tlg_data.csv", "r") as data:
+        reader_obj = csv.reader(data)
+        for row in reader_obj:
+            event_date = datetime.strptime(date_str, "%Y-%m-%d") + timedelta(days=int(row[0]))
+            event_time = datetime.strptime(time_str, "%H:%M") + timedelta(minutes=offset)
+            event_start = event_date.replace(hour=event_time.hour, minute=event_time.minute)
+            event_end = event_start + timedelta(minutes=int(row[1]))
+            event = Event()
+            event.add("summary", row[2])
+            event.add("dtstart", event_start)
+            event.add("dtend", event_end)
+            cal.add_component(event)
+            offset = offset + int(row[1])
+        return cal
+
+def main():
+    date_input, time_input = get_user_input()
+    cal = create_ical_event(date_input, time_input)
     
     # Save the event to a file
     event_filename = "event.ics"
