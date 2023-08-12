@@ -28,6 +28,7 @@ def create_ical_event(date_str, time_str):
        calendar object.'''
     # offset represents the time in minutes we are starting at.
     offset = 0
+    day = 0
     # Create calendar object.
     cal = Calendar()
     # Add some necessary things.
@@ -39,18 +40,34 @@ def create_ical_event(date_str, time_str):
         reader_obj = csv.reader(data)
         #Loop over the csv object.
         for row in reader_obj:
-            # event_date comes from the user.  Add the days offset from the csv.
-            event_date = datetime.strptime(date_str, "%Y-%m-%d") + timedelta(days=int(row[0]))
-            # event_time comes from the user.  Add the offset value in minutes.
-            event_time = datetime.strptime(time_str, "%H:%M") + timedelta(minutes=offset)
-            event_start = event_date.replace(hour=event_time.hour, minute=event_time.minute)
-            event_end = event_start + timedelta(minutes=int(row[1]))
-            event = Event()
-            event.add("summary", row[2])
-            event.add("dtstart", event_start)
-            event.add("dtend", event_end)
-            cal.add_component(event)
-            offset = offset + int(row[1])
+            if row[0] == day:
+                # event_date comes from the user.  Add the days offset from the csv.
+                event_date = datetime.strptime(date_str, "%Y-%m-%d") + timedelta(days=int(row[0]))
+                # event_time comes from the user.  Add the offset value in minutes.
+                event_time = datetime.strptime(time_str, "%H:%M") + timedelta(minutes=offset)
+                event_start = event_date.replace(hour=event_time.hour, minute=event_time.minute)
+                event_end = event_start + timedelta(minutes=int(row[1]))
+                event = Event()
+                event.add("summary", row[2])
+                event.add("dtstart", event_start)
+                event.add("dtend", event_end)
+                cal.add_component(event)
+                offset = offset + int(row[1])
+            else:
+                day = row[0]
+                offset = 0
+                # event_date comes from the user.  Add the days offset from the csv.
+                event_date = datetime.strptime(date_str, "%Y-%m-%d") + timedelta(days=int(row[0]))
+                # event_time comes from the user.  Add the offset value in minutes.
+                event_time = datetime.strptime(time_str, "%H:%M") + timedelta(minutes=offset)
+                event_start = event_date.replace(hour=event_time.hour, minute=event_time.minute)
+                event_end = event_start + timedelta(minutes=int(row[1]))
+                event = Event()
+                event.add("summary", row[2])
+                event.add("dtstart", event_start)
+                event.add("dtend", event_end)
+                cal.add_component(event)
+                offset = offset + int(row[1])
         return cal
 
 def main():
