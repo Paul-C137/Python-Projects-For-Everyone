@@ -28,6 +28,8 @@ def create_ical_event(date_str, time_str):
        calendar object.'''
     # offset represents the time in minutes we are starting at.
     offset = 0
+    # Starting with day set to 0, we can check every line in the csv file
+    # and dtermine if we are still on the same day.  
     day = 0
     # Create calendar object.
     cal = Calendar()
@@ -52,6 +54,7 @@ def create_ical_event(date_str, time_str):
                 event.add("dtstart", event_start)
                 event.add("dtend", event_end)
                 cal.add_component(event)
+                # Change the offset based on the minute offset in the csv file.
                 offset = offset + int(row[1])
             else:
                 day = row[0]
@@ -71,6 +74,7 @@ def create_ical_event(date_str, time_str):
         return cal
 
 def main():
+    # Prompt user for the class start date
     date_input, time_input = get_user_input()
     cal = create_ical_event(date_input, time_input)
     
