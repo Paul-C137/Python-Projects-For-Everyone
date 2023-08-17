@@ -12,20 +12,22 @@
 
 # A variable in all caps is called a constant.
 # All caps tells us that this variable should not be changed elsewhere
-GREETING = 'Welcome, David!'
+GREETING = '            Welcome, Jay!'
 
 def show_main_menu():
     print('*'*40)
-    #print('            Welcome, Jay!')
     print(GREETING)
     print('*'*40)
     print('Please select an option below:')
     print('1. Add a car:')
+    print()
+    print('Type "q" to quit.')
     print('*'*40)
     
 def main():
-    show_main_menu()
-    choice = input()
-    print(choice)
+    choice = " "
+    while choice != 'q':
+        show_main_menu()
+        choice = input()
 
 main()
