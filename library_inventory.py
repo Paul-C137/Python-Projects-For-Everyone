@@ -3,7 +3,7 @@
 '''Jay Leno has hired you to create a Python app that will allow him
    to inventory his cars and retrieve information about them from the
    command line.  He was strangely insistent that you NOT use any form
-   of fancy GUI!  He wants and old-school terminal menu.
+   of fancy GUI!  He wants an old-school terminal menu.
 
    This app allows the user to Create, Read, Update, and Delete (CRUD)
    information about cars in their private collection.  Information such
@@ -19,7 +19,10 @@ def show_main_menu():
     print(GREETING)
     print('*'*40)
     print('Please select an option below:')
-    print('1. Add a car:')
+    print('1. Add car.')
+    print('2. Find car.')
+    print('3. Update car information.')
+    print('4. Remove car.')
     print()
     print('Type "q" to quit.')
     print('*'*40)
