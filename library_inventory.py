@@ -26,7 +26,7 @@ def show_main_menu():
     
 def main():
     choice = " "
-    while choice != 'q':
+    while choice.lower() != 'q':
         show_main_menu()
         choice = input()
 
