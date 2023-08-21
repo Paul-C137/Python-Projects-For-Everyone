@@ -31,6 +31,7 @@ inventory = []
 
 # a dictionary linking a room to other rooms
 ## A dictionary linking a room to other rooms
+## A dictionary linking a room to other rooms
 rooms = {
 
             'Hall' : {
@@ -44,10 +45,14 @@ rooms = {
                   'item'  : 'monster',
                 },
             'Dining Room' : {
-                  'west' : 'Hall'
-             }
-          }
-
+                  'west' : 'Hall',
+                  'south': 'Garden',
+                  'item' : 'potion'
+               },
+            'Garden' : {
+                  'north' : 'Dining Room'
+            }
+         }
 
 # start the player in the Hall
 currentRoom = 'Hall'
@@ -96,9 +101,15 @@ while True:
             #tell them they can't get it
             print('Can\'t get ' + move[1] + '!')
 
-            ## If a player enters a room with a monster
+    ## If a player enters a room with a monster
     if 'item' in rooms[currentRoom] and 'monster' in rooms[currentRoom]['item']:
         print('A monster has got you... GAME OVER!')
         break
+
+    ## Define how a player can win
+    if currentRoom == 'Garden' and 'key' in inventory and 'potion' in inventory:
+        print('You escaped the house with the ultra rare key and magic potion... YOU WIN!')
+        break
+
 
 
