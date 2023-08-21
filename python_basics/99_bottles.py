@@ -1,4 +1,4 @@
-10#!/usr/bin/python3
+#!/usr/bin/python3
 
 '''Program to print lyrics of song "99 bottles of beer."'''
 
