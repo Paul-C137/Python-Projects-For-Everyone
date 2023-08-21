@@ -30,34 +30,21 @@ def showStatus():
       print('You see a ' + rooms[currentRoom]['item'])
     print("---------------------------")
 
+def get_map():
+    '''Opn a file with a Python Dictionary saved inside'''
+    with open('map.txt') as map_file:
+        # Use the eval() function to be able to convert
+        # the contents to a dictionary.  Otherwise, save
+        # the contents as JSON and use json.loads().
+        rooms = eval(map_file.read())
+    return rooms
 
 # an inventory, which is initially empty
 inventory = []
 
 # a dictionary linking a room to other rooms
-## A dictionary linking a room to other rooms
-## A dictionary linking a room to other rooms
-rooms = {
 
-            'Hall' : {
-                  'south' : 'Kitchen',
-                  'east'  : 'Dining Room',
-                  'item'  : 'key'
-                },
-
-            'Kitchen' : {
-                  'north' : 'Hall',
-                  'item'  : 'monster',
-                },
-            'Dining Room' : {
-                  'west' : 'Hall',
-                  'south': 'Garden',
-                  'item' : 'potion'
-               },
-            'Garden' : {
-                  'north' : 'Dining Room'
-            }
-         }
+rooms = get_map()
 
 # start the player in the Hall
 currentRoom = 'Hall'
