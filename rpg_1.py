@@ -30,17 +30,24 @@ def showStatus():
 inventory = []
 
 # a dictionary linking a room to other rooms
+## A dictionary linking a room to other rooms
 rooms = {
 
             'Hall' : {
-                  'south' : 'Kitchen'
+                  'south' : 'Kitchen',
+                  'east'  : 'Dining Room',
+                  'item'  : 'key'
                 },
 
             'Kitchen' : {
-                  'north' : 'Hall'
-                }
+                  'north' : 'Hall',
+                  'item'  : 'monster',
+                },
+            'Dining Room' : {
+                  'west' : 'Hall'
+             }
+          }
 
-         }
 
 # start the player in the Hall
 currentRoom = 'Hall'
