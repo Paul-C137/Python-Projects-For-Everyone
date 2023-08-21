@@ -6,11 +6,16 @@ def showInstructions():
     """Show the game instructions when called"""
     #print a main menu and the commands
     print('''
-    RPG Game
-    ========
+    ==========================================================
+                             RPG Game
+    ==========================================================
+    Objective:  Get to the garden with the key and the potion.
+    Watch out for the Monster!!!
+    ==========================================================
     Commands:
       go [direction]
       get [item]
+    ==========================================================  
     ''')
 
 def showStatus():
