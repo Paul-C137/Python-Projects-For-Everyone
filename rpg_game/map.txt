@@ -8,12 +8,12 @@
 
             'Kitchen' : {
                   'north' : 'Hall',
-                  'item'  : 'monster',
+                  'item'  : ['monster'],
                 },
             'Dining Room' : {
                   'west' : 'Hall',
                   'south': 'Garden',
-                  'item' : 'potion'
+                  'item' : ['potion']
                },
             'Garden' : {
                   'north' : 'Dining Room'

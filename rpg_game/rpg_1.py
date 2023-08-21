@@ -25,6 +25,7 @@ def showInstructions():
     Commands:
       go [direction]
       get [item]
+      cast [spell]
     ==========================================================  
     ''')
 
@@ -51,7 +52,7 @@ def get_map():
     return rooms
 
 # Set a move counter to 0.
-move_count = 0
+move_count = 5
 
 # an inventory, which is initially empty
 inventory = []
@@ -81,6 +82,7 @@ while True:
 
     #if they type 'go' first
     if move[0] == 'go':
+        move_count += 1
         #check that they are allowed wherever they want to go
         if move[1] in rooms[currentRoom]:
             #set the current room to the new room
@@ -90,7 +92,7 @@ while True:
             print('You can\'t go that way!')
 
     #if they type 'get' first
-    if move[0] == 'get' :
+    if move[0] == 'get':
         # make two checks:
         # 1. if the current room contains an item
         # 2. if the item in the room matches the item the player wishes to get
@@ -106,8 +108,13 @@ while True:
             #tell them they can't get it
             print('Can\'t get ' + move[1] + '!')
 
+    if move[0] == 'cast' and move[1] in inventory:
+        inventory.remove(move[1])
+        freeze = True
+        move_count = 0
+
     ## If a player enters a room with a monster
-    if 'item' in rooms[currentRoom] and 'monster' in rooms[currentRoom]['item']:
+    if 'item' in rooms[currentRoom] and 'monster' in rooms[currentRoom]['item'] and move_count > 5:
         print('A monster has got you... GAME OVER!')
         break
 
