@@ -45,7 +45,7 @@ def showStatus():
     print("---------------------------")
 
 def get_map():
-    '''Opn a file with a Python Dictionary saved inside'''
+    '''Open a file with a Python Dictionary saved inside'''
     with open('map.txt') as map_file:
         # Use the eval() function to be able to convert
         # the contents to a dictionary.  To prevent code

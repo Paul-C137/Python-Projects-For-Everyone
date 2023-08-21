@@ -26,11 +26,27 @@ def show_main_menu():
     print()
     print('Type "q" to quit.')
     print('*'*40)
+
+def add_car():
+    car_data = {}
+    make = input('What is the make? >> ')
+    model = input('What is the model? >> ')
+    year = input('What is the year? >> ')
+    car_data['make'] = make
+    car_data['model'] = model
+    car_data['year'] = year
+    return car_data
+   
     
 def main():
     choice = " "
+    main_list = []
     while choice.lower() != 'q':
         show_main_menu()
         choice = input()
+        if choice.lower() == '1': 
+            print('You chose to add a car.')
+            main_list.append(add_car())
+    print(main_list)
 
 main()
