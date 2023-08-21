@@ -12,6 +12,8 @@
    expression is then returned.  This is a
    security risk!"""
 
+import json
+
 def showInstructions():
     """Show the game instructions when called"""
     #print a main menu and the commands
@@ -38,7 +40,8 @@ def showStatus():
     print('Inventory:', inventory)
     # check if there's an item in the room, if so print it
     if "item" in rooms[currentRoom]:
-      print('You see', rooms[currentRoom]['item'])
+        if rooms[currentRoom]["item"]:
+            print('You see', rooms[currentRoom]['item'])
     print("---------------------------")
 
 def get_map():
@@ -51,6 +54,13 @@ def get_map():
         rooms = eval(map_file.read())
     return rooms
 
+def get_json():
+    '''Open a file with json inside.'''
+    with open('map.json') as map_file:
+        content = map_file.read()
+        rooms = json.loads(content)
+    return rooms
+
 # Set a move counter to 0.
 move_count = 5
 
@@ -58,7 +68,7 @@ move_count = 5
 inventory = []
 
 # a dictionary linking a room to other rooms
-rooms = get_map()
+rooms = get_json()
 
 # start the player in the Hall
 currentRoom = 'Hall'
