@@ -1,6 +1,16 @@
 #!/usr/bin/python3
 """Driving a simple game framework with
-   a dictionary object | Alta3 Research"""
+   a dictionary object | Alta3 Research
+   This program uses the eval() function.
+   The eval() function in Python is used 
+   to evaluate a string as a Python 
+   expression and return the result of that 
+   evaluation. In other words, it takes a 
+   string containing Python code and 
+   executes it as if it were a part of your 
+   program. The result of the evaluated 
+   expression is then returned.  This is a
+   security risk!"""
 
 def showInstructions():
     """Show the game instructions when called"""
@@ -34,8 +44,9 @@ def get_map():
     '''Opn a file with a Python Dictionary saved inside'''
     with open('map.txt') as map_file:
         # Use the eval() function to be able to convert
-        # the contents to a dictionary.  Otherwise, save
-        # the contents as JSON and use json.loads().
+        # the contents to a dictionary.  To prevent code
+        # injection attacks, save the contents as JSON 
+        # and use json.loads() instead.
         rooms = eval(map_file.read())
     return rooms
 
