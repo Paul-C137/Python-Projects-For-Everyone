@@ -3,7 +3,7 @@
             'Hall' : {
                   'south' : 'Kitchen',
                   'east'  : 'Dining Room',
-                  'item'  : 'key'
+                  'item'  : ['key', 'freeze_spell']
                 },
 
             'Kitchen' : {

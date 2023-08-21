@@ -37,7 +37,7 @@ def showStatus():
     print('Inventory:', inventory)
     # check if there's an item in the room, if so print it
     if "item" in rooms[currentRoom]:
-      print('You see a ' + rooms[currentRoom]['item'])
+      print('You see', rooms[currentRoom]['item'])
     print("---------------------------")
 
 def get_map():
@@ -50,11 +50,13 @@ def get_map():
         rooms = eval(map_file.read())
     return rooms
 
+# Set a move counter to 0.
+move_count = 0
+
 # an inventory, which is initially empty
 inventory = []
 
 # a dictionary linking a room to other rooms
-
 rooms = get_map()
 
 # start the player in the Hall
@@ -98,7 +100,7 @@ while True:
             #display a helpful message
             print(move[1] + ' got!')
             #delete the item key:value pair from the room's dictionary
-            del rooms[currentRoom]['item']
+            rooms[currentRoom]['item'].remove(move[1])
         # if there's no item in the room or the item doesn't match
         else:
             #tell them they can't get it
