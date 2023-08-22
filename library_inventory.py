@@ -42,10 +42,16 @@ def add_car():
 def write_to_file(python_data):
     with open('car_data.json', 'w') as of:
         json.dump(python_data, of)
+
+def load_data():
+    with open('car_data.json') as of:
+        loaded_data = json.load(of)
+    return loaded_data
     
 def main():
     choice = " "
-    main_list = []
+    main_list = load_data()
+    print(main_list)
     while choice.lower() != 'q':
         show_main_menu()
         choice = input()
