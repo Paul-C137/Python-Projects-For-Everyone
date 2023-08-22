@@ -10,6 +10,8 @@
    as Make, Model, and Year are stored in the form of a Python 
    dictionary in a file because Jay hates databases...can't stand them.'''
 
+import json
+
 # A variable in all caps is called a constant.
 # All caps tells us that this variable should not be changed elsewhere
 GREETING = '            Welcome, Jay!'
@@ -36,7 +38,10 @@ def add_car():
     car_data['model'] = model
     car_data['year'] = year
     return car_data
-   
+
+def write_to_file(python_data):
+    with open('car_data.json', 'w') as of:
+        json.dump(python_data, of)
     
 def main():
     choice = " "
@@ -47,6 +52,6 @@ def main():
         if choice.lower() == '1': 
             print('You chose to add a car.')
             main_list.append(add_car())
-    print(main_list)
+    write_to_file(main_list)
 
 main()
