@@ -8,9 +8,11 @@
    This app allows the user to Create, Read, Update, and Delete (CRUD)
    information about cars in their private collection.  Information such
    as Make, Model, and Year are stored in the form of a Python 
-   dictionary in a file because Jay hates databases...can't stand them.'''
+   dictionary in a file and an excel file because Jay hates databases...
+   can't stand them.'''
 
 import json
+import pandas as pd
 
 # A variable in all caps is called a constant.
 # All caps tells us that this variable should not be changed elsewhere
@@ -43,6 +45,10 @@ def write_to_file(python_data):
     with open('car_data.json', 'w') as of:
         json.dump(python_data, of)
 
+def write_to_excel(python_data):
+    df = pd.DataFrame(python_data)
+    df.to_excel('car_data.xlsx')
+
 def load_data():
     with open('car_data.json') as of:
         loaded_data = json.load(of)
@@ -59,5 +65,6 @@ def main():
             print('You chose to add a car.')
             main_list.append(add_car())
     write_to_file(main_list)
+    write_to_excel(main_list)
 
 main()
