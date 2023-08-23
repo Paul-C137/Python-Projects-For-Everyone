@@ -41,6 +41,19 @@ def add_car():
     car_data['year'] = year
     return car_data
 
+def delete_car(main_list):
+    model_to_delete = input('Enter the model of the car to delete: ')
+    found_car = None
+    for i in main_list:
+        if i['model'] == model_to_delete:
+            found_car = i
+            break
+    if found_car:
+        main_list.remove(found_car)
+        print(f'{found_car["make"]} {found_car["model"]} {found_car["year"]} has been removed.')
+    else:
+        print(f'Car with model "{model_to_delete}" not found in the inventory.')
+
 def write_to_file(python_data):
     with open('car_data.json', 'w') as of:
         json.dump(python_data, of)
@@ -64,6 +77,8 @@ def main():
         if choice.lower() == '1': 
             print('You chose to add a car.')
             main_list.append(add_car())
+        if choice.lower() == '4':
+            delete_car(main_list)
     write_to_file(main_list)
     write_to_excel(main_list)
 
