@@ -23,5 +23,6 @@ def get_card_names(chosen_set):
     for i in cards:
         card_name = i.name
         all_the_cards.append(card_name)
+        all_the_cards.sort()
     return all_the_cards
 
