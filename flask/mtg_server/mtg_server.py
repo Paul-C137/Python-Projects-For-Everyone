@@ -19,7 +19,11 @@ def main():
     
 @app.route('/set', methods=['GET'])
 def set():
-    selected_set = request.args.get('selected_set')
+    selected_set = list(request.args.get('selected_set').split(','))
+    selected_set = [item.replace("(", "")
+                    .replace(")", "")
+                    .replace("'", "")
+                    .strip() for item in selected_set]
     return render_template('set.html', selected_set=selected_set)
 
 if __name__ == '__main__':
