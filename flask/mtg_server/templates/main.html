@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Sign in with your name</title>
+    <form action = "/main" method = "POST">
+        <p>Select a Set Name:</p>
+        <p>
+            <select name="selected_set">
+                {% for set_name in all_sets %}
+                <option value="{{ set_name }}">{{ set_name }}</option>
+                {% endfor %}
+            </select>
+        </p>
+        <p><input type = "submit" value = "submit"></p>
+    </form>
+</head>
+<body>
+
+</body>
+</html>
