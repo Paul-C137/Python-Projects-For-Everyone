@@ -26,3 +26,12 @@ def get_card_names(chosen_set):
         all_the_cards.sort()
     return all_the_cards
 
+def get_card_art(card_name):
+    card = Card.where(name=card_name).all()
+    if card[0].image_url:
+        return card[0].image_url
+    else:
+        return None
+
+     
+

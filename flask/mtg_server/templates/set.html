@@ -8,12 +8,13 @@
     <p>You chose {{ selected_set[1] }}.</p>
     <p>Select a Card Name:</p>
         <p>
-            <form action = "/set" method = "POST"></form>
+            <form action = "/set" method = "POST">
                 <select name="selected_card">
                     {% for card_name in selected_cards %}
                     <option value="{{ card_name }}">{{ card_name }}</option>
                     {% endfor %}
                 </select>
+                <p><input type = "submit" value = "submit"></p>
             </form>
         </p>
 </head>
