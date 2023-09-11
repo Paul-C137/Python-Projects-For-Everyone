@@ -19,9 +19,10 @@ import pandas as pd
 GREETING = '            Welcome, Jay!'
 
 def show_main_menu():
-    print('*'*40)
+    '''displays menu options for the user'''
+    print('*'*40)  #print the string 40 times
     print(GREETING)
-    print('*'*40)
+    print('*'*40)  #print the string 40 times
     print('Please select an option below:')
     print('1. Add car.')
     print('2. Find car.')
@@ -32,6 +33,7 @@ def show_main_menu():
     print('*'*40)
 
 def add_car():
+    '''builds a dictionary with the car data'''
     car_data = {}
     make = input('What is the make? >> ')
     model = input('What is the model? >> ')
@@ -42,27 +44,31 @@ def add_car():
     return car_data
 
 def delete_car(main_list):
+    '''matches a car in the main dictionary and deletes it'''
     model_to_delete = input('Enter the model of the car to delete: ')
-    found_car = None
+    found_car = None  # evaluates to False
     for i in main_list:
         if i['model'] == model_to_delete:
             found_car = i
             break
-    if found_car:
+    if found_car:  # evaluates to True
         main_list.remove(found_car)
         print(f'{found_car["make"]} {found_car["model"]} {found_car["year"]} has been removed.')
     else:
         print(f'Car with model "{model_to_delete}" not found in the inventory.')
 
 def write_to_file(python_data):
+    '''Overwrite the old data with the newest set'''
     with open('car_data.json', 'w') as of:
         json.dump(python_data, of)
 
 def write_to_excel(python_data):
+    '''send the data to a spreadsheet (why not?)'''
     df = pd.DataFrame(python_data)
     df.to_excel('car_data.xlsx')
 
 def load_data():
+    '''get all the data from the file into the program'''
     with open('car_data.json') as of:
         loaded_data = json.load(of)
     return loaded_data
