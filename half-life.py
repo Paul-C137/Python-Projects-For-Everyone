@@ -1,3 +1,8 @@
+#!usr/bin/python3
+'''P. Lack | lackhack.tech
+   This program allows the user to enter a quantity of substance
+   consumed with its half-life and check the amount of the 
+   substance remaining after a specific number of hours.'''
 import math
 
 def calculate_remaining_quantity():
