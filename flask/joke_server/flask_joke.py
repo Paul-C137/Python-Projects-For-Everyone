@@ -20,4 +20,4 @@ def get_joke():
         return "Failed to retrieve a joke."
 
 if __name__ == '__main__':
-    app.run(host='0.0.0.0', port=9988)
+    app.run(host='0.0.0.0', port=2224)
