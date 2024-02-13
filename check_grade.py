@@ -24,7 +24,7 @@ def check_grade_2(grade):
 
 grade = 85
 print("This results from multiple if statements:")
-print(check_grade_1(grade))
+check_grade_1(grade)
 print()
 print("This results from if, elif, else construction:")
-print(check_grade_2(grade))
+check_grade_2(grade)
