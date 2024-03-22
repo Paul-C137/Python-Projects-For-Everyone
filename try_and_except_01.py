@@ -2,11 +2,13 @@
 '''Keystone Learning | Paul Lack
    Catching some errors using try and except'''
 
+#Capitalized variables are constants.  We will never change this variable.
 PI = 3.14159
 
 def area_circle(r):
     result = PI*r**2  #'**' is how you indicate exponents.
-    return result     #When you call the function later, you get this variable back.
+    return result     #When you call the function later, 
+                      #you get this variable back.
 
 def main():
     try:
