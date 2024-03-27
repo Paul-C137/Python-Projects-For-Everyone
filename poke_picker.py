@@ -32,7 +32,7 @@ def show_submenu_1():
 def get_abilities():
     choice = input('Enter the name of the Pokemon you wish to know about. >>> ')
     BASE_URL = 'https://pokeapi.co/api/v2/ability/'
-    response = requests.get(BASE_URL + choice)
+    response = requests.get(BASE_URL + choice).json()
     print(response)
     
     print('\n'*3)
