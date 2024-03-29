@@ -1,0 +1,16 @@
+---
+- name: Playbook - update and upgrade hosts    # metadata
+  hosts: planetexpress:!farnsworth   # we want to take the planetexpress group and remove farnsworth
+  connection: ssh                    # default is to use the connection plugin ssh.py
+  gather_facts: yes                  # this is important and we'll talk about it.
+
+  tasks:  # this section is a list of things you want to do.
+  - name: update hosts      # this is just some metadata that is very helpful
+    apt:                    # this is the module (just a python script)
+      update_cache: yes     # this is a parameter for the module.                  
+    become: yes             # this allows us to escalate priviledges
+
+  - name: upgrade hosts
+    apt:
+      upgrade: dist
+    become: yes
