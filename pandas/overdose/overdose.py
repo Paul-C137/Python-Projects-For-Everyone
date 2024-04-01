@@ -27,7 +27,7 @@ def plot_graph(filtered_df):
     plt.savefig(png_file_name, format='png')
 
 # Path to the Excel file
-file_path = "/Users/paullack/Documents01/projects/python/python-projects-for-everyone/pandas/overdose/excel_DOSE_dashboard_output-download.xlsx"
+file_path = "PUT/YOUR/FILE/PATH/HERE!!!/excel_DOSE_dashboard_output-download.xlsx"
 
 # Number of rows to skip (skip the first five rows)
 skip_rows = 5
