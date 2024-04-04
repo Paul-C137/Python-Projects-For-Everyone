@@ -1,0 +1,9 @@
+---
+- name: Retrieve and Debug Password
+  hosts: localhost
+  vars_files:
+    - passwords.yml
+  tasks:
+    - name: Debug Password
+      debug:
+        msg: "The password is {{ my_password }}"
