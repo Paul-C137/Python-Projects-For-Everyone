@@ -7,8 +7,12 @@ def is_all_letters(string):
     return True
 
 def main():
-    user_input = input('Type a string: >>  ')
-    print(is_all_letters(user_input))
+    while True:
+        user_input = input('Type a string with only letters: >>  ')
+        if is_all_letters(user_input):
+            print('Thanks for following the instructions')
+            break
+        print('Please follow the instructions.')
 
 if __name__ == "__main__":
     main()
