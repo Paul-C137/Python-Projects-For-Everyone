@@ -10,4 +10,5 @@ def main():
     user_input = input('Type a string: >>  ')
     print(is_all_letters(user_input))
 
-main()
+if __name__ == "__main__":
+    main()
