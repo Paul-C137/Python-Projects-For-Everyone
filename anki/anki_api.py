@@ -1,6 +1,14 @@
 import requests
 import json
 
+deck = "cybersecurity"
+card_type = "Basic"
+
+def get_card_data(file_path):
+    with open(file_path) as of:
+        data = json.load(of)
+    return data
+
 def add_card(deck_name, note_type, front_text, back_text):
     # AnkiConnect URL
     url = "http://localhost:8765"
@@ -18,7 +26,7 @@ def add_card(deck_name, note_type, front_text, back_text):
                     "Back": back_text
                 },
                 "options": {
-                    "allowDuplicate": False
+                    "allowDuplicate": True
                 },
                 "tags": []
             }
@@ -31,8 +39,14 @@ def add_card(deck_name, note_type, front_text, back_text):
     # Check the response
     if response.status_code == 200:
         print("Card added successfully.")
+        print(response.text)
     else:
         print(f"Failed to add card: {response.text}")
 
-# Example usage
-add_card("Default", "Basic", "What is the capital of France?", "Paris")
+def main():
+
+    card_data = get_card_data('files/cybersecurity.txt')
+    for card in card_data:
+        add_card(deck, card_type, card['question'], card['answer'])
+        
+main()
