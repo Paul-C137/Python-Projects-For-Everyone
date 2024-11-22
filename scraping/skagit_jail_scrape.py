@@ -33,7 +33,6 @@ def search_inmates():
 # getting rid of everything over 30 characters long, we clean our list and
 # make sure every single key has the exact same values.
     clean_list = []
-    #cleanest_list =[]
     for index, item in enumerate(new_list):
         if (len(item)) < 30:
             clean_list.insert(index, new_list[index])
@@ -70,7 +69,7 @@ def search_inmates():
             clean_list[index+2][8:17], clean_list[index+4][2:17]])
 
 # List structure:  Name Number of inmate, Last, First, Middle, Suffix, 
-# Housing Location, Date of Arrest, Release Date, in_custody flag, pod
+# Housing Location, Date of Arrest
     return final_list, clean_list
 
 def convert_to_list_of_dict(inmates):
